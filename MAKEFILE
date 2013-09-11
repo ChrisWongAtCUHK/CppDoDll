@@ -1,0 +1,12 @@
+CC = g++
+INCLUDE = .
+CFLAGS = -g -Wall -ansi
+run: UseDll.exe
+	@./UseDll.exe
+DoDll.dll: DoDll.cpp
+	$(CC) $(CFLAGS) -o DoDll.dll -fPIC -shared DoDll.cpp
+UseDll.exe: DoDll.h DoDll.dll
+	$(CC) $(CFLAGS) -o UseDll.exe UseDll.cpp
+clean:
+	@rm UseDll.exe DoDll.dll
+	
